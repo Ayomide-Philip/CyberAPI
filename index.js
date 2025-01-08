@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
+import dns from "dns";
 
 const app = express();
 const port = 3000;
@@ -21,17 +22,17 @@ app.get("/myIpAddress", async (req, res) => {
 
     if (res.statusCode === 404) {
       var errorMessage = {
-        message: res.statusMessage,
+        error: res.statusMessage,
       };
       res.json(errorMessage);
     } else if (res.statusCode === 408) {
       var errorMessage = {
-        message: "Request timeout",
+        error: "Request timeout",
       };
       res.json(errorMessage);
     } else {
       var errorMessage = {
-        message: res.statusMessage,
+        error: res.statusMessage,
       };
       res.json(errorMessage);
     }
@@ -59,24 +60,39 @@ app.post("/myLocation", async (req, res) => {
   } catch (err) {
     if (res.statusCode === 404) {
       var errorMessage = {
-        message: res.statusMessage,
+        error: res.statusMessage,
       };
       res.json(errorMessage);
     } else if (res.statusCode === 408) {
       var errorMessage = {
-        message: "Request timeout",
+        error: "Request timeout",
       };
       res.json(errorMessage);
     } else {
       var errorMessage = {
-        message: res.statusMessage,
+        error: res.statusMessage,
       };
       res.json(errorMessage);
     }
   }
 });
 
-app.get("/reverseDNSLookup", (req, res) => {});
+app.get("/reverseDNSLookup", (req, res) => {
+  const ip = req.query.ip;
+
+  dns.reverse(ip, (err, hostname) => {
+    if (err) {
+      console.log(err);
+      res.json({ error: "Invalid IP address" });
+    } else {
+      console.log(hostname);
+      res.json({
+        ip: ip,
+        hostname: hostname,
+      });
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
