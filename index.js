@@ -6,8 +6,6 @@ const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
-app.get("/getIp", (req, res) => {});
-
 app.get("/myIpAddress", async (req, res) => {
   try {
     const response = await axios.get("https://get.geojs.io/v1/ip.json");
@@ -78,6 +76,6 @@ app.post("/myLocation", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(port, host, () => {
+  console.log(`Server is running on port http://localhost:${port}`);
 });
