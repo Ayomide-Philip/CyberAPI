@@ -6,9 +6,7 @@ const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
-app.get("/getIp", (req, res) => {
-  console.log(req.headers["x-forwarded-for"] || req.socket.remoteAddress);
-});
+app.get("/getIp", (req, res) => {});
 
 app.get("/myIpAddress", async (req, res) => {
   try {
