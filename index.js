@@ -76,6 +76,6 @@ app.post("/myLocation", async (req, res) => {
   }
 });
 
-app.listen(port, host, () => {
+app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
