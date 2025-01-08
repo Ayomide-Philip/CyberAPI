@@ -6,6 +6,10 @@ const app = express();
 const port = 3000;
 app.use(bodyParser.json());
 
+app.get("/getIp", (req, res) => {
+  console.log(req.headers["x-forwarded-for"] || req.socket.remoteAddress);
+});
+
 app.get("/myIpAddress", async (req, res) => {
   try {
     const response = await axios.get("https://get.geojs.io/v1/ip.json");
@@ -18,19 +22,18 @@ app.get("/myIpAddress", async (req, res) => {
   } catch (err) {
     console.log(err);
     console.log(res.statusCode);
-    
+
     if (res.statusCode === 404) {
       var errorMessage = {
         message: res.statusMessage,
       };
       res.json(errorMessage);
-    } else if (res.statusCode === 408){
+    } else if (res.statusCode === 408) {
       var errorMessage = {
-        message:"Request timeout",
+        message: "Request timeout",
       };
       res.json(errorMessage);
-    }
-    else {
+    } else {
       var errorMessage = {
         message: res.statusMessage,
       };
@@ -63,12 +66,12 @@ app.post("/myLocation", async (req, res) => {
         message: res.statusMessage,
       };
       res.json(errorMessage);
-    } else if (res.statusCode === 408){
+    } else if (res.statusCode === 408) {
       var errorMessage = {
-        message:"Request timeout",
+        message: "Request timeout",
       };
       res.json(errorMessage);
-    }else {
+    } else {
       var errorMessage = {
         message: res.statusMessage,
       };
