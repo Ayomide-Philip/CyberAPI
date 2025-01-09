@@ -6,8 +6,8 @@ The CyberSecurity API provides a set of tools to help developers integrate secur
 
 ## Features
 
-- Threat Detection
-- Vulnerability Scanning
+- Getting your IP Address,
+- Get some information about an IP address, likecity, region, country .e.t.c.
 - Security Analytics
 - Real-time Monitoring
 
