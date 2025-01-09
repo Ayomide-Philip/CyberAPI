@@ -4,7 +4,6 @@ import axios from "axios";
 import dns from "dns";
 import { exec } from "child_process";
 import { stderr, stdout } from "process";
-import { log } from "console";
 
 const app = express();
 const port = 3000;
