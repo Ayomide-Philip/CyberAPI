@@ -5,7 +5,7 @@
 The CyberSecurity API provides a set of tools to help developers integrate security features into their applications. This API offers functionalities such as Getting your IP Address, Reverse DNS Lookup, and DNS Lookup.
 
 ## About API
-This API 
+The main ggoal of this API is to help with some Cyber Security Basics work, like getting a device IP address, getting 
 
 ## Features
 
