@@ -2,8 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import dns from "dns";
-import { exec } from "child_process";
-import { stderr, stdout } from "process";
 
 const app = express();
 const port = 3000;
@@ -114,19 +112,17 @@ app.get("/dnsLookup", (req, res) => {
 });
 
 app.get("/nmapScan", (req, res) => {
- const opts = {
-  range: ['scanme.nmap.org', '192.168.0.0/26']
-};
+  const opts = {
+    range: ["scanme.nmap.org", "192.168.0.0/26"],
+  };
 
+  nmap.scan(opts, function (err, report) {
+    if (err) throw new Error(err);
 
-nmap.scan(opts, function(err, report) {
-  if (err) throw new Error(err);
-
-  for (let item in report) {
-    console.log(JSON.stringify(report[item], null, 2));
-  }
-});
-
+    for (let item in report) {
+      console.log(JSON.stringify(report[item], null, 2));
+    }
+  });
 });
 
 app.listen(port, () => {
