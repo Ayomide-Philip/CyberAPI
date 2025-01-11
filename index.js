@@ -116,6 +116,18 @@ app.get("/dnsLookup", (req, res) => {
   });
 });
 
+app.get("/nmapScan", (req, res) => {
+  var nmapScan = new nmap.QuickScan(req.query.ip);
+  nmapScan.on("complete", function (data) {
+    console.log(data);
+  });
+  nmapScan.on("error", function (error) {
+    console.log(error);
+  });
+
+  nmapScan.startScan();
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
