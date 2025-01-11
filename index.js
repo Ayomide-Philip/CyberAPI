@@ -20,7 +20,6 @@ app.get("/myIpAddress", async (req, res) => {
     res.json(ipDetail);
   } catch (err) {
     console.log(err);
-    console.log(res.statusCode);
 
     if (res.statusCode === 404) {
       var errorMessage = {
