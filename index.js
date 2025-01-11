@@ -4,10 +4,13 @@ import axios from "axios";
 import dns from "dns";
 import { exec } from "child_process";
 import { stderr, stdout } from "process";
+import nmap from "node-nmap";
 
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
+
+nmap.nmapLocation = "nmap"; //default
 
 app.get("/myIpAddress", async (req, res) => {
   try {
