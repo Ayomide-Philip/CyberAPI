@@ -29,3 +29,5 @@ After dclning the file on your local system, you change directory, to the CyberA
 ```bash
 cd /CyberAPI
 ```
+
+After this to install all the required packages for the project you first need NODEJS installed on your local machine, if you dont have you can download  https://nodejs.org/en/download
