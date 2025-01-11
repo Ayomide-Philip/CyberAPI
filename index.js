@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import dns from "dns";
+import nmap from "libnmap";
 
 const app = express();
 const port = 3000;
@@ -111,19 +112,6 @@ app.get("/dnsLookup", (req, res) => {
   });
 });
 
-app.get("/nmapScan", (req, res) => {
-  const opts = {
-    range: ["scanme.nmap.org", "192.168.0.0/26"],
-  };
-
-  nmap.scan(opts, function (err, report) {
-    if (err) throw new Error(err);
-
-    for (let item in report) {
-      console.log(JSON.stringify(report[item], null, 2));
-    }
-  });
-});
 
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
