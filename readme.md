@@ -23,3 +23,5 @@ To install the CyberSecurity API, run the following command:
 ```bash
 git clone https://github.com/Ayomide-Philip/CyberAPI.git
 ```
+
+After dclning the file on your local system, you change directory
