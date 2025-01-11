@@ -7,7 +7,7 @@ The CyberSecurity API provides a set of tools to help developers integrate secur
 ## About API
 
 The main goal of this API is to help with some Cyber Security Basics work, like getting a device IP address by just querying it from the myIpAddress route, getting some location about the IP address .e.t.c. In this project i used some free api to make request to get some information like the ip address and querying for the user GeoLocation.
-The project also use some default 
+The project also use some default node package like "dns" to make query on a particular domain name.
 
 ## Features
 
