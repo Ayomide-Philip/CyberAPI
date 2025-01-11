@@ -24,10 +24,10 @@ To install the CyberSecurity API, run the following command:
 git clone https://github.com/Ayomide-Philip/CyberAPI.git
 ```
 
-After dclning the file on your local system, you change directory, to the CyberAPI
+After cloning the file on your local system, you change directory, to the CyberAPI
 
 ```bash
 cd /CyberAPI
 ```
 
-After this to install all the required packages for the project you first need NODEJS installed on your local machine, if you dont have you can download  https://nodejs.org/en/download
+After this to install all the required packages for the project you first need NODEJS installed on your local machine, if you dont have you can download  [NodeJS Official Website](https://nodejs.org)
