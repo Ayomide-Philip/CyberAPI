@@ -4,6 +4,7 @@
     "body-parser": "^1.20.3",
     "dns": "^0.2.2",
     "express": "^4.21.2",
+    "libnmap": "^0.4.19",
     "node-nmap": "^4.0.0",
     "request-ip": "^3.3.0"
   },
