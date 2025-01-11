@@ -4,13 +4,10 @@ import axios from "axios";
 import dns from "dns";
 import { exec } from "child_process";
 import { stderr, stdout } from "process";
-import nmap from "node-nmap";
 
 const app = express();
 const port = 3000;
 app.use(bodyParser.json());
-
-nmap.nmapLocation = "nmap"; //default
 
 app.get("/myIpAddress", async (req, res) => {
   try {
@@ -117,15 +114,7 @@ app.get("/dnsLookup", (req, res) => {
 });
 
 app.get("/nmapScan", (req, res) => {
-  var nmapScan = new nmap.QuickScan(req.query.ip);
-  nmapScan.on("complete", function (data) {
-    console.log(data);
-  });
-  nmapScan.on("error", function (error) {
-    console.log(error);
-  });
-
-  nmapScan.startScan();
+ 
 });
 
 app.listen(port, () => {
