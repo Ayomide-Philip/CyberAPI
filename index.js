@@ -112,8 +112,16 @@ app.get("/dnsLookup", (req, res) => {
   });
 });
 
-app.get("/portScanner", (req, res) => {
-  
+app.get("/portScanner/checkPortStatus", (req, res) => {
+  portscanner.checkPortStatus(req.query.port, req.query.ip, (error, status) => {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      console.log(status);
+    }
+
+  });
 });
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
