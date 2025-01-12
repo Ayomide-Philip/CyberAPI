@@ -121,7 +121,7 @@ app.get("/portScanner/checkPortStatus", (req, res) => {
       });
     } else {
       res.json({
-        status: `The port is ${req.query.port} on target ${req.query.ip}`,
+        status: `The port  ${req.query.port} is ${status} on target ${req.query.ip}`,
       });
     }
   });
