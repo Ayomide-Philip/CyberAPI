@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import dns from "dns";
+import portscanner from "portscanner";
 
 const app = express();
 const port = 3000;
@@ -111,7 +112,9 @@ app.get("/dnsLookup", (req, res) => {
   });
 });
 
-app.get("/portScanner", (req, res) => {});
+app.get("/portScanner", (req, res) => {
+  
+});
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
