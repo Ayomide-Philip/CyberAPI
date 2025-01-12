@@ -125,6 +125,9 @@ app.get("/portScanner/checkPortStatus", (req, res) => {
     }
   });
 });
+
+portscanner.findAPortInUse("/portScanner/findPortInUse", (req, res) => {});
+
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
