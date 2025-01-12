@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
-
+import isPortReachable from "is-port-reachable";
 
 const app = express();
 const port = 3000;
@@ -165,6 +165,23 @@ app.get("/portScanner/findPortNotInUse", (req, res) => {
       }
     }
   );
+});
+
+app.get("/portScanner/isPortReachable", async (req, res) => {
+  var reponse = await isPortReachable(req.query.port, { host: req.query.host });
+  if (response === true) {
+    res.json({
+      status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
+    });
+  } else if(reponse === false){
+    res.json({
+      status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
+    });
+  } else {
+    res.json({
+      status: `There is a problem with getting the status of the Port ${req.query.port} on Host ${req.query.host}`,
+    });
+  }
 });
 
 app.listen(port, () => {
