@@ -169,11 +169,11 @@ app.get("/portScanner/findPortNotInUse", (req, res) => {
 
 app.get("/portScanner/isPortReachable", async (req, res) => {
   var reponse = await isPortReachable(req.query.port, { host: req.query.host });
-  if (response === true) {
+  if (reponse === true) {
     res.json({
       status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
     });
-  } else if(reponse === false){
+  } else if (reponse === false) {
     res.json({
       status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
     });
