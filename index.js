@@ -40,7 +40,7 @@ app.get("/myIpAddress", async (req, res) => {
   }
 });
 
-app.post("/myLocation", async (req, res) => {
+app.get("/myLocation", async (req, res) => {
   try {
     const response = await axios.get(
       "https://get.geojs.io/v1/ip/geo/" + req.query.ip + ".json"
