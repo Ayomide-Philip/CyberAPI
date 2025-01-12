@@ -155,7 +155,7 @@ app.get("/portScanner/findPortNotInUse", (req, res) => {
       } else {
         console.log(status);
 
-        if ((status = null)) {
+        if (status == false) {
           res.json({
             status: `All the Port Specified are in use`,
           });
