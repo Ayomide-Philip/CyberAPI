@@ -116,11 +116,11 @@ app.get("/portScanner/checkPortStatus", (req, res) => {
   portscanner.checkPortStatus(req.query.port, req.query.ip, (error, status) => {
     if (error) {
       console.log(error);
+    } else {
+      res.json({
+        status: `The port is ${req.query.port} on target ${req.query.ip}`,
+      });
     }
-    else {
-      console.log(status);
-    }
-
   });
 });
 app.listen(port, () => {
