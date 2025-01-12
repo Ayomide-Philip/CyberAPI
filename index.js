@@ -142,6 +142,33 @@ app.get("/portScanner/findPortInUse", (req, res) => {
   });
 });
 
+app.get("/portScanner/findPortNotInUse", (req, res) => {
+  portscanner.findAPortNotInUse(
+    req.query.port,
+    req.query.ip,
+    (error, status) => {
+      if (error) {
+        console.log(error);
+        res.json({
+          error: error,
+        });
+      } else {
+        console.log(status);
+
+        if ((status = null)) {
+          res.json({
+            status: `All the Port Specified are in use`,
+          });
+        } else {
+          res.json({
+            status: `The port ${status} on Target ${req.query.ip} is not in use.`,
+          });
+        }
+      }
+    }
+  );
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
