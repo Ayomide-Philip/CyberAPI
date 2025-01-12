@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
+import { log } from "console";
 
 const app = express();
 const port = 3000;
@@ -127,11 +128,15 @@ app.get("/portScanner/checkPortStatus", (req, res) => {
 });
 
 app.get("/portScanner/findPortInUse", (req, res) => {
-  portscanner.findAPortInUse(req.query.port, ip, (error, status) => {
+  portscanner.findAPortInUse(req.query.port, req.query.ip, (error, status) => {
     if (error) {
       console.log(error);
       res.json({
         error: error,
+      });
+    } else {
+      res.json({
+        status: `The port ${status} on Target ${req.query.ip} is in use.`,
       });
     }
   });
