@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
-import { log } from "console";
+
 
 const app = express();
 const port = 3000;
