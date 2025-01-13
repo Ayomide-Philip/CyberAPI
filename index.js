@@ -69,7 +69,7 @@ app.get("/myLocation", async (req, res) => {
 
       if (err.status === 404) {
         var errorMessage = {
-          error: res.statusMessage,
+          error:`The IP address `,
         };
         res.json(errorMessage);
       } else if (res.statusCode === 408) {
