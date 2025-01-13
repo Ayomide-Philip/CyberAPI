@@ -33,7 +33,7 @@ app.get("/myIpAddress", async (req, res) => {
       res.json(errorMessage);
     } else {
       var errorMessage = {
-        error: req.statusCode,
+        error: req.statusMessage,
       };
       res.json(errorMessage);
     }
