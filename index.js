@@ -65,11 +65,11 @@ app.get("/myLocation", async (req, res) => {
       };
       res.json(location);
     } catch (err) {
+      console.log(err);
       console.log(err.status);
-
       if (err.status === 404) {
         var errorMessage = {
-          error:`The IP address `,
+          error: `The IP address ${req.query.ip} provided is not valid.`,
         };
         res.json(errorMessage);
       } else if (res.statusCode === 408) {
