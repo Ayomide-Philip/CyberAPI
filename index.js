@@ -4,6 +4,7 @@ import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
 import isPortReachable from "is-port-reachable";
+import { log } from "console";
 
 const app = express();
 const port = 3000;
@@ -41,39 +42,45 @@ app.get("/myIpAddress", async (req, res) => {
 });
 
 app.get("/myLocation", async (req, res) => {
-  try {
-    const response = await axios.get(
-      "https://get.geojs.io/v1/ip/geo/" + req.query.ip + ".json"
-    );
-    const respond = response.data;
-    var location = {
-      myIpAddress: respond.ip,
-      userCity: respond.city,
-      userRegion: respond.region,
-      userCountry: respond.country,
-      userLongitutde: respond.longitude,
-      userLatitude: respond.latitude,
-      userTimeZone: respond.timezone,
-      userCountryCode: respond.country_code,
-      userNetworkProvider: respond.organization_name,
-    };
-    res.json(location);
-  } catch (err) {
-    if (res.statusCode === 404) {
-      var errorMessage = {
-        error: res.statusMessage,
+  if (req.query.ip === undefined || "") {
+    res.json({
+      error: `No Ip address was given`,
+    });
+  } else {
+    try {
+      const response = await axios.get(
+        "https://get.geojs.io/v1/ip/geo/" + req.query.ip + ".json"
+      );
+      const respond = response.data;
+      var location = {
+        myIpAddress: respond.ip,
+        userCity: respond.city,
+        userRegion: respond.region,
+        userCountry: respond.country,
+        userLongitutde: respond.longitude,
+        userLatitude: respond.latitude,
+        userTimeZone: respond.timezone,
+        userCountryCode: respond.country_code,
+        userNetworkProvider: respond.organization_name,
       };
-      res.json(errorMessage);
-    } else if (res.statusCode === 408) {
-      var errorMessage = {
-        error: "Request timeout",
-      };
-      res.json(errorMessage);
-    } else {
-      var errorMessage = {
-        error: res.statusMessage,
-      };
-      res.json(errorMessage);
+      res.json(location);
+    } catch (err) {
+      if (res.statusCode === 404) {
+        var errorMessage = {
+          error: res.statusMessage,
+        };
+        res.json(errorMessage);
+      } else if (res.statusCode === 408) {
+        var errorMessage = {
+          error: "Request timeout",
+        };
+        res.json(errorMessage);
+      } else {
+        var errorMessage = {
+          error: res.statusMessage,
+        };
+        res.json(errorMessage);
+      }
     }
   }
 });
