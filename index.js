@@ -4,7 +4,7 @@ import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
 import isPortReachable from "is-port-reachable";
-import { log } from "console";
+import { error, log } from "console";
 
 const app = express();
 const port = 3000;
@@ -65,7 +65,9 @@ app.get("/myLocation", async (req, res) => {
       };
       res.json(location);
     } catch (err) {
-      if (res.statusCode === 404) {
+      console.log(err.status);
+
+      if (err.status === 404) {
         var errorMessage = {
           error: res.statusMessage,
         };
