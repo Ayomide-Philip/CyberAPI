@@ -110,13 +110,24 @@ app.get("/reverseDNSLookup", (req, res) => {
 app.get("/dnsLookup", (req, res) => {
   const domain = req.query.domain;
   const recordType = req.query.recordType;
-  if (domain && recordType == undefined) {
-    console.log(true);
+  if ((domain && recordType) == undefined) {
+    res.json({
+      error: "You did specify either a domain name or record type or Both.",
+    });
   } else {
+    console.log(false);
+
     dns.resolve(domain, recordType, (err, records) => {
       if (err) {
         console.log(err);
-        res.json({ error: "Invalid domain" });
+        console.log(err.code);
+        if (err.code === "ECONNREFUSED") {
+          res.json({
+            error: `You have problem connceting to this API.`,
+          });
+        } else {
+          res.json({ error: err.code });
+        }
       } else {
         res.json({
           domain: domain,
