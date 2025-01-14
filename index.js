@@ -120,10 +120,9 @@ app.get("/dnsLookup", (req, res) => {
     dns.resolve(domain, recordType, (err, records) => {
       if (err) {
         console.log(err);
-        console.log(err.code);
         if (err.code === "ECONNREFUSED") {
           res.json({
-            error: `You have problem connceting to this API.`,
+            error: `You have Conectivity problem.`,
           });
         } else {
           res.json({ error: err.code });
