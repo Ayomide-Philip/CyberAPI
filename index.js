@@ -72,14 +72,14 @@ app.get("/myLocation", async (req, res) => {
           error: `The IP address ${req.query.ip} provided is not valid.`,
         };
         res.json(errorMessage);
-      } else if (res.statusCode === 408) {
+      } else if (err.status === undefined) {
         var errorMessage = {
-          error: "Request timeout",
+          error: "Request timeout, check out your internet connection.",
         };
         res.json(errorMessage);
       } else {
         var errorMessage = {
-          error: res.statusMessage,
+          error: `We ecounter an error with an error code ${err.status}`,
         };
         res.json(errorMessage);
       }
@@ -89,19 +89,22 @@ app.get("/myLocation", async (req, res) => {
 
 app.get("/reverseDNSLookup", (req, res) => {
   const ip = req.query.ip;
-
-  dns.reverse(ip, (err, hostname) => {
-    if (err) {
-      console.log(err);
-      res.json({ error: "Invalid IP address" });
-    } else {
-      console.log(hostname);
-      res.json({
-        ip: ip,
-        hostname: hostname,
-      });
-    }
-  });
+  if (ip === undefined || "") {
+    res.json({ error: "No IP address was specified." });
+  } else {
+    dns.reverse(ip, (err, hostname) => {
+      if (err) {
+        console.log(err);
+        res.json({ error: "Invalid IP address" });
+      } else {
+        console.log(hostname);
+        res.json({
+          ip: ip,
+          hostname: hostname,
+        });
+      }
+    });
+  }
 });
 
 app.get("/dnsLookup", (req, res) => {
