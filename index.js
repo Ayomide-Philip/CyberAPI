@@ -110,19 +110,22 @@ app.get("/reverseDNSLookup", (req, res) => {
 app.get("/dnsLookup", (req, res) => {
   const domain = req.query.domain;
   const recordType = req.query.recordType;
-
-  dns.resolve(domain, recordType, (err, records) => {
-    if (err) {
-      console.log(err);
-      res.json({ error: "Invalid domain" });
-    } else {
-      res.json({
-        domain: domain,
-        recordType: recordType,
-        records: records,
-      });
-    }
-  });
+  if (domain && recordType == undefined) {
+    console.log(true);
+  } else {
+    dns.resolve(domain, recordType, (err, records) => {
+      if (err) {
+        console.log(err);
+        res.json({ error: "Invalid domain" });
+      } else {
+        res.json({
+          domain: domain,
+          recordType: recordType,
+          records: records,
+        });
+      }
+    });
+  }
 });
 
 app.get("/portScanner/checkPortStatus", (req, res) => {
