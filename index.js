@@ -122,7 +122,7 @@ app.get("/dnsLookup", (req, res) => {
         console.log(err);
         if (err.code === "ECONNREFUSED") {
           res.json({
-            error: `You have Conectivity problem.`,
+            error: `You have a Connectivity problem.`,
           });
         } else {
           res.json({ error: err.code });
