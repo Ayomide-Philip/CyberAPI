@@ -4,6 +4,7 @@ import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
 import isPortReachable from "is-port-reachable";
+import pills from "./componet/index.js";
 
 const app = express();
 const port = 3000;
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+  log
   res.render("index.ejs");
 });
 
@@ -199,7 +201,7 @@ app.get("/portScanner/findPortNotInUse", (req, res) => {
 app.get("/portScanner/isPortReachable", async (req, res) => {
   var reponse = await isPortReachable(req.query.port, { host: req.query.host });
   console.log(reponse);
-  
+
   if (reponse === true) {
     res.json({
       status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
