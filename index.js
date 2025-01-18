@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs",{pills: pills});
+  res.render("index.ejs", { pills: pills });
 });
 
 app.get("/myIpAddress", async (req, res) => {
@@ -40,7 +40,7 @@ app.get("/myIpAddress", async (req, res) => {
       res.json(errorMessage);
     } else {
       var errorMessage = {
-        error: req.statusMessage,
+        error: err.code,
       };
       res.json(errorMessage);
     }
