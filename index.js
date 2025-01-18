@@ -116,7 +116,6 @@ app.get("/dnsLookup", (req, res) => {
     });
   } else {
     console.log(false);
-
     dns.resolve(domain, recordType, (err, records) => {
       if (err) {
         console.log(err);
