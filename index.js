@@ -216,6 +216,15 @@ app.get("/portScanner/isPortReachable", async (req, res) => {
   }
 });
 
+app.post("/", async (req, res) => {
+  const baseurl = req.headers.host;
+  console.log(baseurl);
+
+  const response = await axios.get(`http://${baseurl}/myIpAddress`);
+  const ipAddress = response.data.myIpAddress;
+  console.log(ipAddress);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port http://localhost:${port}`);
 });
