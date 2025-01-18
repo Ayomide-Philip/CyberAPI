@@ -118,5 +118,18 @@
                             console.error(error);
                         });
                 }
+
+                function getLocation(events) {
+                    events.preventDefault();
+                    var ip = document.querySelector('input[name="userIp"]');
+                    axios.get(`/myLocation?ip=${encodeURIComponent(ip.value)}`)
+                        .then((response) => {
+                            console.log(`${response.data}`);
+                            ip.value = response.data.myIpAddress;
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                        });
+                }
             </script>
             <%- include("partials/footer.ejs") %>
