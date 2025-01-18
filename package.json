@@ -4,6 +4,7 @@
     "axios": "^1.7.9",
     "body-parser": "^1.20.3",
     "dns": "^0.1.5",
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "is-port-reachable": "^4.0.0",
     "portscanner": "^2.2.0"
