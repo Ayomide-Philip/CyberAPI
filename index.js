@@ -4,7 +4,6 @@ import axios from "axios";
 import dns from "dns";
 import portscanner from "portscanner";
 import isPortReachable from "is-port-reachable";
-import { error, log } from "console";
 
 const app = express();
 const port = 3000;
