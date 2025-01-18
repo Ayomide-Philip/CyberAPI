@@ -121,11 +121,12 @@
 
                 function getLocation(events) {
                     events.preventDefault();
-                    var ip = document.querySelector('input[name="userIp"]');
-                    axios.get(`/myLocation?ip=${encodeURIComponent(ip.value)}`)
+                    var ip = document.querySelector('input[name="userIp"]').value;
+                    console.log(ip);
+                    axios.get(`/myLocation?ip=${encodeURIComponent(ip)}`)
                         .then((response) => {
                             console.log(`${response.data}`);
-                            ip.value = response.data.myIpAddress;
+                            console.log(response.data.myIpAddress);
                         })
                         .catch((error) => {
                             console.error(error);
