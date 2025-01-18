@@ -14,4 +14,9 @@ div.subcontainer {
     border: 2px solid black;
     border-radius: 10px;
     padding: 20px;
+    background-color: white;
+}
+
+body {
+    background-image: url("../images/pexels-markusspiske-2004161.jpg");
 }
