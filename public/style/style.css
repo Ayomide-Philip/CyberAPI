@@ -1,4 +1,5 @@
 div.container {
+    margin-top: 50px;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -19,4 +20,16 @@ div.subcontainer {
 
 body {
     background-image: url("../images/pexels-markusspiske-2004161.jpg");
+}
+
+@media(max-width: 350px) {
+    div.container {
+        margin-top: 100px;
+        display: flex;
+        margin-bottom: 50px;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
 }
