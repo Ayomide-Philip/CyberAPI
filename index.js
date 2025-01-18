@@ -198,13 +198,15 @@ app.get("/portScanner/findPortNotInUse", (req, res) => {
 
 app.get("/portScanner/isPortReachable", async (req, res) => {
   var reponse = await isPortReachable(req.query.port, { host: req.query.host });
+  console.log(reponse);
+  
   if (reponse === true) {
     res.json({
       status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
     });
   } else if (reponse === false) {
     res.json({
-      status: `The Port ${req.query.port} on Host ${req.query.host} is Reachable.`,
+      status: `The Port ${req.query.port} on Host ${req.query.host} is not Reachable.`,
     });
   } else {
     res.json({
