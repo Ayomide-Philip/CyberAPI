@@ -20,7 +20,6 @@ app.get("/myIpAddress", async (req, res) => {
   try {
     const response = await axios.get("https://get.geojs.io/v1/ip.json");
     const ip = response.data.ip;
-    console.log(ip);
     var ipDetail = {
       myIpAddress: ip,
     };
@@ -214,15 +213,6 @@ app.get("/portScanner/isPortReachable", async (req, res) => {
       status: `There is a problem with getting the status of the Port ${req.query.port} on Host ${req.query.host}`,
     });
   }
-});
-
-app.post("/", async (req, res) => {
-  const baseurl = req.headers.host;
-  console.log(baseurl);
-
-  const response = await axios.get(`http://${baseurl}/myIpAddress`);
-  const ipAddress = response.data.myIpAddress;
-  console.log(ipAddress);
 });
 
 app.listen(port, () => {
