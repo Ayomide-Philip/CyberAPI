@@ -71,8 +71,8 @@
                                     <div class="input-group textarea">
                                         <span class="input-group-text">Ip Location</span>
                                         <div class="form-control" aria-label="With textarea" rows="7" cols="100%">
-                                            <p> Ip Address: xxxxxx</p>
-                                            <p>City: xxxxxx</p>
+                                            <p> Ip Address: <span id="ipAddress"> </span> </p>
+                                            <p>City: <span></span></p>
                                             <p>Region: xxxxxx</p>
                                             <p>Country: xxxxxxx</p>
                                             <p>Longitude : xxxxxx</p>
@@ -110,9 +110,10 @@
                     events.preventDefault();
                     var ip = document.querySelector('input[name="ip"]');
                     axios.get(`/myIpAddress`)
-                        .then((response) => {
-                            console.log(`${response.data.myIpAddress}`);
-                            ip.value = response.data.myIpAddress;
+                        .then((response) => {                        
+                            const myIpAddress = response.data.myIpAddress;
+                            console.log(`${myIpAddress}`);
+                            document.querySelector("span#ipAddress").innerHTML = `${response.data.myIpAddress}`;
                         })
                         .catch((error) => {
                             console.error(error);
