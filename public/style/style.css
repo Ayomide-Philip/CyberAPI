@@ -39,7 +39,7 @@ textarea {
     width: 100%;
     resize: none;
     display: flex;
-    
+    font-size: larger;
 }
 
 div {
