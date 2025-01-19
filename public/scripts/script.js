@@ -59,10 +59,10 @@ function reverseIp(events) {
   document.querySelector(".recivedDomainName").style.display = "none";
   events.preventDefault();
   var ip = document.querySelector('input[name="userIpInputed"]');
-  if (ip == undefined || "") {
+  if (ip.value == undefined || "") {
     document.querySelector(".recivedDomainName").style.display = "flex";
     document.querySelector("#recivedDomainName").value =
-      "There is no Ip Specified";
+      "There is no Ip Specified.";
   } else {
     axios
       .get(`/reverseDNSLookup?ip=${encodeURIComponent(ip.value)}`)
