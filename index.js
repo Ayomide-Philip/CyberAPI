@@ -100,7 +100,7 @@ app.get("/reverseDNSLookup", (req, res) => {
     dns.reverse(ip, (err, hostname) => {
       if (err) {
         console.log(err);
-        res.json({ error: "Invalid IP address" });
+        res.json({ error: err.code });
       } else {
         console.log(hostname);
         res.json({
