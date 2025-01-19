@@ -54,3 +54,29 @@ function getLocation(events) {
       console.error(error);
     });
 }
+document.querySelector(".recivedDomainName").style.display = "none";
+function reverseIp(events) {
+  document.querySelector(".recivedDomainName").style.display = "none";
+  events.preventDefault();
+  var ip = document.querySelector('input[name="userIpInputed"]');
+  if (ip == undefined || "") {
+    document.querySelector(".recivedDomainName").style.display = "flex";
+    document.querySelector("#recivedDomainName").value =
+      "There is no Ip Specified";
+  } else {
+    axios
+      .get(`/reverseDNSLookup?ip=${encodeURIComponent(ip.value)}`)
+      .then((response) => {
+        const hostName = response.data.hostname;
+        console.log(`${hostName}`);
+        document.querySelector(".recivedDomainName").style.display = "flex";
+        document.querySelector("#recivedDomainName").value = hostName;
+      })
+      .catch((error) => {
+        console.error(error);
+        document.querySelector(".recivedDomainName").style.display = "flex";
+        document.querySelector("#recivedDomainName").value =
+          "There is an error Encountered";
+      });
+  }
+}
