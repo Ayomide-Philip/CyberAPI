@@ -91,6 +91,23 @@
                                     associated with an IP address. Unlike regular DNS lookup, which resolves domain
                                     names to IPs, reverse DNS queries map IP addresses to their respective domain names.
                                 </p>
+                                <form onsubmit="reverseIp(event)">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">IP</span>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInputGroup1"
+                                                placeholder="Ip Address" name="userIpInputed">
+                                            <label for="floatingInputGroup1">Ip Address</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <input type="submit" id="userIpInputed" class="btn btn-primary btn-lg"
+                                            value="Reverse Ip Lookup">
+                                    </div>
+                                    <div class="input-group textarea">
+                                        <textarea class="input-group-text">Ip Location</textarea>
+                                    </div>
+                                </form>
                             </div>
                             <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab"
                                 tabindex="0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut dolorem ex
