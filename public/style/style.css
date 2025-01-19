@@ -34,8 +34,12 @@ body {
     }
 }
 
-.textarea {
+textarea {
     margin-top: 20px;
+    width: 100%;
+    resize: none;
+    display: flex;
+    
 }
 
 div {
