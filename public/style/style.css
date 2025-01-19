@@ -40,6 +40,11 @@ div {
     display: flex;
 }
 
+.textarea {
+    margin-top: 20px;
+    padding: 10px;
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -47,7 +52,8 @@ footer {
     height: 20%;
     background-color: black;
     color: white;
-    margin-top: 10px;
+    margin-top: 20px;
+    border-top: 2px solid white;
 }
 
 div.footer {
