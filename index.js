@@ -114,32 +114,14 @@ app.get("/reverseDNSLookup", (req, res) => {
 
 app.get("/dnsLookup", (req, res) => {
   const domain = req.query.domain;
-  const recordType = req.query.recordType;
-  if ((domain && recordType) == undefined) {
-    res.json({
-      error: "You did specify either a domain name or record type or Both.",
-    });
-  } else {
-    console.log(false);
-    dns.resolve(domain, recordType, (err, records) => {
-      if (err) {
-        console.log(err);
-        if (err.code === "ECONNREFUSED") {
-          res.json({
-            error: `You have a Connectivity problem.`,
-          });
-        } else {
-          res.json({ error: err.code });
-        }
-      } else {
-        res.json({
-          domain: domain,
-          recordType: recordType,
-          records: records,
-        });
-      }
-    });
-  }
+
+  dns.resolve4(domain, (error, address) => {
+    if(error){
+      console.log(error)
+    } else {
+      
+    }
+  });
 });
 
 app.get("/portScanner/checkPortStatus", (req, res) => {
