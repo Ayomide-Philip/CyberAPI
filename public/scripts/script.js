@@ -68,9 +68,15 @@ function reverseIp(events) {
       .get(`/reverseDNSLookup?ip=${encodeURIComponent(ip.value)}`)
       .then((response) => {
         const hostName = response.data.hostname;
-        console.log(`${hostName}`);
-        document.querySelector(".recivedDomainName").style.display = "flex";
-        document.querySelector("#recivedDomainName").value = hostName;
+        if (hostName !== undefined) {
+          console.log(`${hostName}`);
+          document.querySelector(".recivedDomainName").style.display = "flex";
+          document.querySelector("#recivedDomainName").value = hostName;
+        } else {
+          document.querySelector(".recivedDomainName").style.display = "flex";
+          document.querySelector("#recivedDomainName").value =
+            "The Ip Specified is not related to a Domain Name.";
+        }
       })
       .catch((error) => {
         console.error(error);
