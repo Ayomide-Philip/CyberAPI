@@ -28,17 +28,12 @@ body {
         display: flex;
         margin-bottom: 50px;
         width: 100%;
-        height: 100vh;
+        /* height: 100vh; */
         justify-content: center;
         align-items: center;
     }
 }
 
-
-div {
-    resize: none;
-    display: flex;
-}
 
 .textarea {
     margin-top: 20px;
@@ -54,6 +49,10 @@ footer {
     color: white;
     margin-top: 20px;
     border-top: 2px solid white;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    width: 100%;
 }
 
 div.footer {
@@ -66,7 +65,7 @@ div.footer {
         display: flex;
         margin-bottom: 30px;
         width: 100%;
-        height: 100vh;
+        /* height: 100vh; */
         justify-content: center;
         align-items: center;
     }
