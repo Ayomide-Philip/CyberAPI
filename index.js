@@ -119,7 +119,8 @@ app.get("/dnsLookup", (req, res) => {
     if(error){
       console.log(error)
     } else {
-      
+      console.log(address);
+      res.json({addresses: address});
     }
   });
 });
