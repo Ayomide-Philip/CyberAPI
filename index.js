@@ -116,11 +116,13 @@ app.get("/dnsLookup", (req, res) => {
   const domain = req.query.domain;
 
   dns.resolve4(domain, (error, address) => {
-    if(error){
-      console.log(error)
+    if (error) {
+      console.log(error);
+      res.json({
+        error: `Their is an error encountered check the domain name provided or your network connectivity.`,
+      });
     } else {
-      console.log(address);
-      res.json({addresses: address});
+      res.json({ addresses: address });
     }
   });
 });
