@@ -122,6 +122,29 @@
                                     to translate a domain name into its corresponding IP address.
                                     This enables browsers and other applications to locate and connect to websites and
                                     services over the internet, ensuring seamless online communication.</p>
+
+                                <form onsubmit="domainQuery(event)">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Domain</span>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="floatingInputGroup1"
+                                                placeholder="Domain Name" name="userDomainInputed">
+                                            <label for="floatingInputGroup1">Domain Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <input type="submit" id="userDomainInputed" class="btn btn-primary btn-lg"
+                                            value="Domain Lookup">
+                                    </div>
+                                    <!-- <div class="input-group mb-3 mt-2 recivedDomainName">
+                                            <span class="input-group-text">Domain</span>
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control" id="recivedDomainName"
+                                                    placeholder="Domain Name" readonly>
+                                                <label for="recivedDomainName">Domain Name</label>
+                                            </div>
+                                        </div> -->
+                                </form>
                             </div>
 
                             <div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab"
