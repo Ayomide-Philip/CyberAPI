@@ -1,4 +1,5 @@
 document.querySelector(".recivedDomainName").style.display = "none";
+document.querySelector(".recivedIpAddress").style.display = "none";
 
 function getIp(events) {
   events.preventDefault();
@@ -58,7 +59,7 @@ function getLocation(events) {
 }
 
 function reverseIp(events) {
-  document.querySelector(".recivedDomainName").style.display = "none";
+  document.querySelector(".recivedIpAddress").style.display = "none";
   events.preventDefault();
   var ip = document.querySelector('input[name="userIpInputed"]');
   if (ip.value == undefined || "") {
@@ -88,3 +89,5 @@ function reverseIp(events) {
       });
   }
 }
+
+function domainQuery(events) {}
