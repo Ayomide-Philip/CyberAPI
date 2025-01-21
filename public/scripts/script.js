@@ -100,20 +100,20 @@ function domainQuery(events) {
   if (domain.value == undefined || "") {
     document.querySelector(".recivedIpAddress").style.display = "flex";
     document.querySelector("#recivedIpAddress").value =
-      "There is no Ip Specified.";
+      "There is no Domain Name Specified.";
   } else {
     axios
       .get(`/dnsLookup?domain=${encodeURIComponent(domain.value)}`)
       .then((response) => {
-        const hostName = response.data.addresses;
-        if (hostName !== undefined) {
-          console.log(`${hostName}`);
+        const ipRecived = response.data.addresses;
+        if (ipRecived !== undefined) {
+          console.log(`${ipRecived}`);
           document.querySelector(".recivedIpAddress").style.display = "flex";
-          document.querySelector("#recivedIpAddress").value = hostName;
+          document.querySelector("#recivedIpAddress").value = ipRecived;
         } else {
           document.querySelector(".recivedIpAddress").style.display = "flex";
           document.querySelector("#recivedIpAddress").value =
-            "The Ip Specified is not related to a Domain Name.";
+            "The Domain Name is incorrect.";
         }
       })
       .catch((error) => {
