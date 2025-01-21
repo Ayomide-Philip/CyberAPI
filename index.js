@@ -122,6 +122,7 @@ app.get("/dnsLookup", (req, res) => {
         error: `Their is an error encountered check the domain name provided or your network connectivity.`,
       });
     } else {
+      console.log(address);
       res.json({ addresses: address[0] });
     }
   });
