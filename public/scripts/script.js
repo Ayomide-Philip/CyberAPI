@@ -59,7 +59,7 @@ function getLocation(events) {
 }
 
 function reverseIp(events) {
-  document.querySelector(".recivedIpAddress").style.display = "none";
+  document.querySelector(".recivedDomainName").style.display = "none";
   events.preventDefault();
   var ip = document.querySelector('input[name="userIpInputed"]');
   if (ip.value == undefined || "") {
@@ -90,4 +90,37 @@ function reverseIp(events) {
   }
 }
 
-function domainQuery(events) {}
+function domainQuery(events) {
+  document.querySelector(".recivedIpAddress").style.display = "none";
+
+  events.preventDefault();
+  var domain = document.querySelector('input[name="userDomainInputed"]');
+  console.log(domain);
+
+  if (domain.value == undefined || "") {
+    document.querySelector(".recivedIpAddress").style.display = "flex";
+    document.querySelector("#recivedIpAddress").value =
+      "There is no Ip Specified.";
+  } else {
+    axios
+      .get(`/dnsLookup?domain=${encodeURIComponent(domain.value)}`)
+      .then((response) => {
+        const hostName = response.data.addresses;
+        if (hostName !== undefined) {
+          console.log(`${hostName}`);
+          document.querySelector(".recivedIpAddress").style.display = "flex";
+          document.querySelector("#recivedIpAddress").value = hostName;
+        } else {
+          document.querySelector(".recivedIpAddress").style.display = "flex";
+          document.querySelector("#recivedIpAddress").value =
+            "The Ip Specified is not related to a Domain Name.";
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        document.querySelector(".recivedIpAddress").style.display = "flex";
+        document.querySelector("#recivedIpAddress").value =
+          "There is an error Encountered";
+      });
+  }
+}
