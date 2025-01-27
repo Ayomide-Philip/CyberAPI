@@ -132,8 +132,6 @@ function isPortReachable(events) {
   var port = document.getElementById("userInputedPort").value;
   const hostName = document.getElementById("userInputedHostName").value;
 
-  console.log(`${hostName}:${port}`);
-
   axios
     .get(
       `/portScanner/isPortReachable?port=${encodeURIComponent(
