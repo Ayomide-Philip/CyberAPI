@@ -157,13 +157,14 @@
                                 <form onsubmit="isPortReachable(event)">
                                     <div class="row mb-3">
                                         <div class="col">
-                                            <input type="text" class="form-control" placeholder="Port Number"
-                                                aria-label="Port Number">
-                                        </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" placeholder="Host name"
+                                            <input type="text" id="userInputedHostName" class="form-control" placeholder="Host name"
                                                 aria-label="Host name">
                                         </div>
+                                        <div class="col">
+                                            <input type="text" id="userInputedPort" class="form-control" placeholder="Port Number"
+                                                aria-label="Port Number">
+                                        </div>
+
                                     </div>
                                     <div class="d-grid gap-2">
                                         <input type="submit" id="getIsPortReachable" class="btn btn-primary btn-lg"
