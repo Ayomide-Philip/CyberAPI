@@ -127,5 +127,6 @@ function domainQuery(events) {
 
 function isPortReachable(events) {
   events.preventDefault();
-  console.log(events);
+  var port = document.getElementById("userInputedPort");
+  const hostName = document.getElementById("userInputedHostName");
 }
