@@ -124,3 +124,8 @@ function domainQuery(events) {
       });
   }
 }
+
+function isPortReachable(events) {
+  events.preventDefault();
+  console.log(events);
+}
