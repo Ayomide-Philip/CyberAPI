@@ -1,5 +1,6 @@
 document.querySelector(".recivedDomainName").style.display = "none";
 document.querySelector(".recivedIpAddress").style.display = "none";
+document.querySelector(".recivedStatus").style.display = "none";
 
 function getIp(events) {
   events.preventDefault();
@@ -126,7 +127,27 @@ function domainQuery(events) {
 }
 
 function isPortReachable(events) {
+  document.querySelector(".recivedStatus").style.display = "none";
   events.preventDefault();
-  var port = document.getElementById("userInputedPort");
-  const hostName = document.getElementById("userInputedHostName");
+  var port = document.getElementById("userInputedPort").value;
+  const hostName = document.getElementById("userInputedHostName").value;
+
+  console.log(`${hostName}:${port}`);
+
+  axios
+    .get(
+      `/portScanner/isPortReachable?port=${encodeURIComponent(
+        port
+      )}&host=${encodeURIComponent(hostName)}`
+    )
+    .then((response) => {
+      document.querySelector(".recivedStatus").style.display = "flex";
+      document.getElementById("recivedStatus").value = response.data.status;
+    })
+    .catch((error) => {
+      console.log(error);
+      document.querySelector(".recivedStatus").style.display = "flex";
+      document.getElementById("recivedStatus").value =
+        "An error was Encountered/";
+    });
 }
